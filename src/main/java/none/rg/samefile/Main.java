@@ -53,6 +53,11 @@ public class Main {
         if (!checkAndMarkVisited(dir)) {
             return;
         }
+        File[] files = dir.listFiles();
+        if (files == null) {
+            System.err.println("Error listing directory: " + dir.getName());
+            return;
+        }
         for (File f : dir.listFiles()) {
             if (f.isDirectory()) {
                 parseDir(f);
